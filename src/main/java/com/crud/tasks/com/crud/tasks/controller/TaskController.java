@@ -26,8 +26,8 @@ public class TaskController {
     public TaskDto getTask(@PathVariable("id") String taskId) {
         return new TaskDto((long)1,"test title","test_content");
     }
-    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask")
-    public void deleteTask(String taskId) {
+    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask/{id}")
+    public void deleteTask(@PathVariable("id") String taskId) {
     }
     @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
     public TaskDto updateTask(@RequestBody TaskDto taskDto) {
