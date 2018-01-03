@@ -33,6 +33,6 @@ public class TaskController {
     public TaskDto updateTask(@RequestBody TaskDto taskDto) {
         return new TaskDto((long)1,"Edited test title","Test content");
     }
-    @RequestMapping(method = RequestMethod.PUT , value = "createTask")
+    @RequestMapping(method = RequestMethod.POST , value = "createTask")
     public void createTask(@RequestBody TaskDto taskDto) {}
 }
