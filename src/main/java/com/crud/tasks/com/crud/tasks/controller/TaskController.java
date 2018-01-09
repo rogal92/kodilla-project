@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -21,19 +22,19 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getTasks")
     public List<TaskDto> getTasks() {
-        return new ArrayList<>();
+        return service.getAllTasks().stream()
+                .map(t ->taskMapper.mapToTaskDto(t))
+                .collect(Collectors.toList());
     }
     @RequestMapping(method = RequestMethod.GET, value = "getTask/{id}")
-    public TaskDto getTask(@PathVariable("id") String taskId) {
-        return new TaskDto((long)1,"test title","test_content");
+    public TaskDto getTask(@PathVariable("id") Long taskId) {
+        return taskMapper.mapToTaskDto(service.getTaskById(taskId));
     }
+
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask/{id}")
-    public void deleteTask(@PathVariable("id") String taskId) {
+    public void deleteTask(@PathVariable("id") Long taskId) {
+        service.deleteTask(service.getTaskById(taskId));
     }
-//    @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
-//    public TaskDto updateTask(@RequestBody TaskDto taskDto) {
-//        return new TaskDto((long)1,"Edited test title","Test content");
-//    }
     @RequestMapping(method = RequestMethod.POST , value = "createTask", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createTask(@RequestBody TaskDto taskDto) {
         service.saveTask(taskMapper.mapToTask(taskDto));
@@ -42,8 +43,8 @@ public class TaskController {
     public TaskDto updateTask(@RequestBody TaskDto taskDto) {
         return taskMapper.mapToTaskDto(service.saveTask(taskMapper.mapToTask(taskDto)));
     }
-    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask/{id}")
-    public TaskDto deleteTask(@PathVariable("id") TaskDto taskDto) {
-        return taskMapper.mapToTaskDto(service.deleteTask(taskMapper.mapToTask(taskDto)));
-    }
+//    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask/{id}")
+//    public TaskDto deleteTask(@PathVariable("id") TaskDto taskDto) {
+//        return taskMapper.mapToTaskDto(service.deleteTask(taskMapper.mapToTask(taskDto)));
+//    }
 }
