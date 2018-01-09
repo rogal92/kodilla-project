@@ -26,6 +26,7 @@ public class TaskController {
                 .map(t ->taskMapper.mapToTaskDto(t))
                 .collect(Collectors.toList());
     }
+
     @RequestMapping(method = RequestMethod.GET, value = "getTask/{id}")
     public TaskDto getTask(@PathVariable("id") Long taskId) {
         return taskMapper.mapToTaskDto(service.getTaskById(taskId));
@@ -35,16 +36,14 @@ public class TaskController {
     public void deleteTask(@PathVariable("id") Long taskId) {
         service.deleteTask(service.getTaskById(taskId));
     }
+
     @RequestMapping(method = RequestMethod.POST , value = "createTask", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createTask(@RequestBody TaskDto taskDto) {
         service.saveTask(taskMapper.mapToTask(taskDto));
     }
+
     @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
     public TaskDto updateTask(@RequestBody TaskDto taskDto) {
         return taskMapper.mapToTaskDto(service.saveTask(taskMapper.mapToTask(taskDto)));
     }
-//    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask/{id}")
-//    public TaskDto deleteTask(@PathVariable("id") TaskDto taskDto) {
-//        return taskMapper.mapToTaskDto(service.deleteTask(taskMapper.mapToTask(taskDto)));
-//    }
 }
