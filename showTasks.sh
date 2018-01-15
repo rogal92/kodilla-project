@@ -1,48 +1,22 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 export CATALINA_HOME=/Users/macbookpro/IdeaProjects/tasks
 
-stop_tomcat()
-{
-  $CATALINA_HOME/bin/catalina.sh stop
+runcrud.sh() {
+sh ./runcrud.sh
 }
 
-start_tomcat()
-{
-  $CATALINA_HOME/bin/catalina.sh start
-  end
-}
-
-rename() {
-  rm build/libs/crud.war
-  if mv build/libs/kodilla-tasks-new-version-0.0.1-SNAPSHOT.war ; then
-     echo "Successfully renamed file"
-  else
-     echo "Cannot compile"
-     fail
-  fi
-}
-
-copy_file() {
-  if cp build/libs/crud.war $CATALINA_HOME/webapps; then
-     start_tomcat
-  else
-     fail
-  fi
+open_browser() {
+$ open -a /Applications/Safari.app http://localhost:8080/crud/v1/task/getTasks
 }
 
 fail() {
   echo "There were errors"
 }
 
-end() {
-  echo "Work is finished"
-}
+if runcrud.sh; then
+open_browser
 
-if ./gradlew build; then
-   rename
-   copy_file
 else
-   stop_tomcat
    fail
 fi
