@@ -2,21 +2,13 @@
 
 export CATALINA_HOME=/Users/macbookpro/IdeaProjects/tasks
 
-runcrud.sh() {
-sh ./runcrud.sh
-}
-
+if ./runcrud.sh; then
 open_browser() {
 $ open -a /Applications/Safari.app http://localhost:8080/crud/v1/task/getTasks
 }
 
-fail() {
+else
+   fail() {
   echo "There were errors"
 }
-
-if runcrud.sh; then
-open_browser
-
-else
-   fail
 fi

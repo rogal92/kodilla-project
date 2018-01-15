@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collector;
 
 
 @RestController
@@ -23,7 +24,9 @@ public class TrelloControler {
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
         return trelloClient.getTrelloBoards().stream()
-                .filter(t ->  );
+                .filter(t -> t.getId().equals(true))
+                .filter(t -> t.getName().contains("Kodilla"))
+                .forEach();
     }
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
     public CreatedTrelloCard createdTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
