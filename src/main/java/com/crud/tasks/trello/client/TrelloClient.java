@@ -32,13 +32,13 @@ public class TrelloClient {
 
     private URI url() {
 
-        UriComponentsBuilder.fromHttpUrl(trelloConfig.getTrelloApiEndpoint() + "/members/rogalski92@hotmail.com/boards")
+        URI url = UriComponentsBuilder.fromHttpUrl(trelloConfig.getTrelloApiEndpoint() + "/members/rogalski92@hotmail.com/boards")
                 .queryParam("key", trelloConfig.getTrelloAppKey())
                 .queryParam("token", trelloConfig.getTrelloToken())
                 .queryParam("username",trelloConfig.getTrelloUsername())
                 .queryParam("fields", "name,id")
                 .queryParam("lists","all").build().encode().toUri();
-        return url();
+        return url;
     }
 
     public List<TrelloBoardDto> getTrelloBoards() {

@@ -23,10 +23,10 @@ public class TrelloControler {
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
-        return trelloClient.getTrelloBoards().stream()
-                .filter(t -> t.getId().equals(true))
-                .filter(t -> t.getName().contains("Kodilla"))
-                .forEach();
+        return trelloClient.getTrelloBoards();
+//                .filter(t -> t.getId().equals(true))
+//                .filter(t -> t.getName().contains("Kodilla"))
+//                .forEach();
     }
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
     public CreatedTrelloCard createdTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
