@@ -74,14 +74,15 @@ public class TrelloClientTest {
                 "test_id"
         );
 
-        URI uri = new URI("http://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20Description&pos=top&idList=test_id");
+        URI url = new URI("http://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20Description&pos=top&idList=test_id");
 
         CreatedTrelloCard createdTrelloCard = new CreatedTrelloCard(
                 "1",
                 "Test task",
                 "http://test.com"
         );
-        when(restTemplate.postForObject(uri, null, CreatedTrelloCard.class)).thenReturn(createdTrelloCard);
+
+        when(restTemplate.postForObject(url, null, CreatedTrelloCard.class)).thenReturn(createdTrelloCard);
 
         //When
         CreatedTrelloCard newCard = trelloClient.createdNewCard(trelloCardDto);
@@ -93,20 +94,20 @@ public class TrelloClientTest {
     }
 }
 //    @Test
-//    public void shouldReturnEmptyList() throws URISyntaxException {
+//public void shouldReturnEmptyList() throws URISyntaxException {
 //        //Given
 //        TrelloBoardDto trelloBoardDto = new TrelloBoardDto(
-//                "Board name",
-//                "board_id",
-//
-//        )
-//        URI uri = new URI()
-//        when(restTemplate.getForObject(uri, null, TrelloBoardDto.class)).thenReturn()
+//        "name",
+//        "id",
+//                "lists"
+//        );
+//        URI url = new URI("http://test.com/members/rogalski92@hotmail.com/boards?key=test&token=test&fields=name,id&lists=all");
+//        when(restTemplate.getForObject(url, TrelloBoardDto[].class)).thenReturn(null);
 //
 //        //When
-//        TrelloBoardDto newBoard = trelloClient.getTrelloBoards();
+//        List<TrelloBoardDto> newBoard = trelloClient.getTrelloBoards();
 //
 //        //Then
-//        assertEquals();
+//        assertEquals(0, newBoard.size());
 //    }
 //}
