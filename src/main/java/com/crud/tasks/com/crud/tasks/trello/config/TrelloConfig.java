@@ -17,11 +17,11 @@ public class TrelloConfig {
     @Value("${trello.app.key}")
     private String trelloAppKey;
 
-    @Value("${trello.app.token")
+    @Value("${trello.app.token}")
     private String trelloToken;
 
-    @Value("${trello.app.username")
-    private String trelloUsername;
+//    @Value("${trello.app.username}")
+//    private String trelloUsername;
 
     @Autowired
     private RestTemplate restTemplate;
