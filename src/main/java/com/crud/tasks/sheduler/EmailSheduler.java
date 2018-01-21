@@ -22,12 +22,16 @@ public class EmailSheduler {
     @Autowired
     private AdminConfig adminConfig;
 
+    public static final String SUBJECT = "Tasks: Once a day email";
+
     @Scheduled(cron = "0 0 10 * * *")
     public void oneTaskMail() {
+
         simpleEmailService.send(new Mail(
                 adminConfig.getAdminMail(),
                 SUBJECT,
-                "Currently in database you've got " + size + " task"
+                "Currently in database you've got 1 task",
+                "email"
         ));
     }
 
@@ -40,9 +44,10 @@ public class EmailSheduler {
             simpleEmailService.send(new Mail(
                     adminConfig.getAdminMail(),
                     SUBJECT,
-                    "Currently in database you've got " + size + " tasks"
+                    "Currently in database you've got " + size + " tasks",
+                    "email"
             ));
         }
-        @Scheduled(fixedDelay = "10000") ;
+        @Scheduled(fixedDelay = "10000");
     }
 }
