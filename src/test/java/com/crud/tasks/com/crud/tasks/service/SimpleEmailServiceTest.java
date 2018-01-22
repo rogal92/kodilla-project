@@ -36,8 +36,7 @@ public class SimpleEmailServiceTest {
 
         while (mail.getToCc().isEmpty()) {
         }
-
-            //When
+        //When
         simpleEmailService.send(mail);
 
         //Then

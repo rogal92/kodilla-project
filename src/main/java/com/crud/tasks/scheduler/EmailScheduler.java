@@ -1,4 +1,4 @@
-package com.crud.tasks.sheduler;
+package com.crud.tasks.scheduler;
 
 import com.crud.tasks.com.crud.tasks.config.AdminConfig;
 import com.crud.tasks.com.crud.tasks.domain.Mail;
@@ -7,9 +7,7 @@ import com.crud.tasks.com.crud.tasks.service.SimpleEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import javax.security.auth.Subject;
-
-public class EmailSheduler {
+public class EmailScheduler {
 
     @Autowired
     private SimpleEmailService simpleEmailService;
