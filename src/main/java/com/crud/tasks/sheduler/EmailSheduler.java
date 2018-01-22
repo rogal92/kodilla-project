@@ -4,10 +4,8 @@ import com.crud.tasks.com.crud.tasks.config.AdminConfig;
 import com.crud.tasks.com.crud.tasks.domain.Mail;
 import com.crud.tasks.com.crud.tasks.repository.TaskRepository;
 import com.crud.tasks.com.crud.tasks.service.SimpleEmailService;
-import com.crud.tasks.com.crud.tasks.service.TrelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.scheduling.annotation.Schedules;
 
 import javax.security.auth.Subject;
 
