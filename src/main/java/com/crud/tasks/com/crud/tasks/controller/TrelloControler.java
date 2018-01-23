@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -22,10 +23,10 @@ public class TrelloControler {
 
     @RequestMapping(method = RequestMethod.GET, value = "/getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
-        return trelloService.fetchTrelloBoards();
-//                .filter(t -> t.getId().equals(true))
-//                .filter(t -> t.getName().contains("Kodilla"))
-//                .forEach();
+        return trelloService.fetchTrelloBoards().stream()
+                .filter(t -> t.getId().equals(true))
+                .filter(t -> t.getName().contains("Kodilla"))
+                .collect(Collectors.toList());
     }
     @RequestMapping(method = RequestMethod.POST, value = "/createTrelloCard")
     public CreatedTrelloCard createdTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
