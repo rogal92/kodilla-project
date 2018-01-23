@@ -21,12 +21,18 @@ public class TrelloControler {
     @Autowired
     private TrelloService trelloService;
 
+    private TrelloBoardDto trelloBoardDto;
+
     @RequestMapping(method = RequestMethod.GET, value = "/getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
-        return trelloService.fetchTrelloBoards().stream()
-                .filter(t -> t.getId().equals(true))
-                .filter(t -> t.getName().contains("Kodilla"))
-                .collect(Collectors.toList());
+
+        while (trelloBoardDto.getId() != null && trelloBoardDto.getName() != null) {
+            return trelloService.fetchTrelloBoards().stream()
+                    .filter(t -> t.getId().isEmpty())
+                    .filter(t -> t.getName().contains("Kodilla"))
+                    .collect(Collectors.toList());
+        }
+        throw new NullPointerException();
     }
     @RequestMapping(method = RequestMethod.POST, value = "/createTrelloCard")
     public CreatedTrelloCard createdTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
