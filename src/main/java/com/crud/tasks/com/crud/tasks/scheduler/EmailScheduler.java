@@ -20,27 +20,22 @@ public class EmailScheduler {
 
     public static final String SUBJECT = "Tasks: Once a day email";
 
-    public void oneTaskMail() {
-        simpleEmailService.send(new Mail(
-                adminConfig.getAdminMail(),
-                SUBJECT,
-                "Currently in database you've got 1 task",
-                "email"
-        ));
-    }
     @Scheduled(fixedDelay = 10000)
     @Scheduled(cron = "0 0 10 * * *")
     public void sendInformationEmail() {
         long size = taskRepository.count();
-        if (size == 1) {
-            oneTaskMail();
+        StringBuilder sb = new StringBuilder();
+        char s = 's';
+        if (size > 1) {
+            sb.append(s);
         } else {
+            sb.deleteCharAt(0);
+        }
             simpleEmailService.send(new Mail(
                     adminConfig.getAdminMail(),
                     SUBJECT,
-                    "Currently in database you've got " + size + " tasks",
+                    "Currently in database you've got " + size + " task" + sb ,
                     "email"
             ));
         }
     }
-}
