@@ -1,8 +1,8 @@
 package com.crud.tasks.com.crud.tasks.config;
 
 import lombok.Getter;
-import lombok.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
 
 @Component
 @Getter

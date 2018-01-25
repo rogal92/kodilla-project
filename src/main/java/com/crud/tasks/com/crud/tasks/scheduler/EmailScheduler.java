@@ -24,17 +24,11 @@ public class EmailScheduler {
     @Scheduled(cron = "0 0 10 * * *")
     public void sendInformationEmail() {
         long size = taskRepository.count();
-        StringBuilder sb = new StringBuilder();
-        char s = 's';
-        if (size > 1) {
-            sb.append(s);
-        } else {
-            sb.deleteCharAt(0);
-        }
+
             simpleEmailService.send(new Mail(
                     adminConfig.getAdminMail(),
                     SUBJECT,
-                    "Currently in database you've got " + size + " task" + sb ,
+                    "Currently in database you've got " + size + " task" + (size>1 ? "s" : "") ,
                     "email"
             ));
         }
