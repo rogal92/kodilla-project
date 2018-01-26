@@ -28,7 +28,6 @@ public class SimpleEmailService {
             LOGGER.error("Failed to process email sending: ", e.getMessage(), e);
         }
     }
-
     private SimpleMailMessage createMailMessage(final Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
