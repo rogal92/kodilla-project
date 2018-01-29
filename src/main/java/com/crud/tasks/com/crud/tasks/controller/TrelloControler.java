@@ -24,13 +24,11 @@ public class TrelloControler {
     @RequestMapping(method = RequestMethod.GET, value = "/getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
 
-        while (trelloBoardDto.getId() != null && trelloBoardDto.getName() != null) {
             return trelloService.fetchTrelloBoards().stream()
-                    .filter(t -> t.getId().isEmpty())
-                    .filter(t -> t.getName().contains("Kodilla"))
+                    .filter(t -> t.getId() != null && !t.getId().isEmpty())
+                    .filter(t -> t.getName() != null && t.getName().contains("Kodilla"))
                     .collect(Collectors.toList());
-        }
-        throw new NullPointerException();
+
     }
     @RequestMapping(method = RequestMethod.POST, value = "/createTrelloCard")
     public CreatedTrelloCard createdTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
