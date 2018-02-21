@@ -6,7 +6,6 @@ import com.crud.tasks.com.crud.tasks.service.DbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +32,7 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask/{id}")
     public void deleteTask(@PathVariable("id") Long taskId) {
-        service.deleteTask(service.getTaskById(taskId));
+        service.deleteTask(service.deleteTask(taskId));
     }
 
     @RequestMapping(method = RequestMethod.POST , value = "createTask", consumes = MediaType.APPLICATION_JSON_VALUE)
