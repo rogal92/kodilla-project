@@ -1,12 +1,14 @@
 package com.crud.tasks.com.crud.tasks.mapper;
 
 import com.crud.tasks.com.crud.tasks.domain.*;
+import org.springframework.stereotype.Component;
 
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import java.util.List;
 
+@Component
 public class TrelloMapper {
 
     public List<TrelloBoard> mapToBoards(final List<TrelloBoardDto> trelloBoardDto) {

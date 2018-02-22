@@ -9,7 +9,7 @@ import org.springframework.http.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/v1/task")
 public class TaskController {
@@ -32,7 +32,7 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask/{id}")
     public void deleteTask(@PathVariable("id") Long taskId) {
-        service.deleteTask(service.deleteTask(taskId));
+        service.deleteTask(taskId);
     }
 
     @RequestMapping(method = RequestMethod.POST , value = "createTask", consumes = MediaType.APPLICATION_JSON_VALUE)
