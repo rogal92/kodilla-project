@@ -2,7 +2,6 @@ package com.crud.tasks.com.crud.tasks.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
