@@ -1,16 +1,9 @@
 package com.crud.tasks.mapper;
 
-import com.crud.tasks.com.crud.tasks.domain.TrelloBoard;
-import com.crud.tasks.com.crud.tasks.domain.TrelloBoardDto;
-import com.crud.tasks.com.crud.tasks.domain.TrelloList;
-import com.crud.tasks.com.crud.tasks.mapper.TrelloMapper;
-import org.junit.Test;
+import com.crud.tasks.mapper.TrelloMapper;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TrelloMapperTestSuite {
@@ -40,9 +33,9 @@ public class TrelloMapperTestSuite {
 
 
 //
-//package com.crud.tasks.com.crud.tasks.mapper;
+//package com.crud.tasks.mapper;
 //
-//        import com.crud.tasks.com.crud.tasks.domain.*;
+//        import com.crud.tasks.domain.*;
 //
 //        import java.util.stream.Collector;
 //        import java.util.stream.Collectors;
