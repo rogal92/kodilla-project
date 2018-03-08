@@ -12,11 +12,12 @@ public class StaticWebPageController {
     public String index(Map<String,Object> model) {
         model.put("variable","My thymeleaf variable");
         model.put("two",2);
-        model.put("one",2);
-//        model.put("multiply","*");
-//        model.put("equals","=");
-//        model.put("plus","+");
-//        model.put("minus","-");
+        model.put("minusTwo", -2);
+        //model.put("one",1);
+        model.put("multiply","*");
+        model.put("equals","=");
+        model.put("plus","+");
+        model.put("minus","-");
         return "index";
     }
 }

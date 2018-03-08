@@ -13,8 +13,13 @@
 
 <br>
 
-    <!--/*@thymesVar id="one" type="com.crud.tasks.controller.StaticWebPageController"*/-->
     <!--/*@thymesVar id="two" type="com.crud.tasks.controller.StaticWebPageController"*/-->
-    <span th:text="${one} + ${two}"></span>
+    <!--/*@thymesVar id="multiply" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+    <!--/*@thymesVar id="minus" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+    <!--/*@thymesVar id="plus" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+    <!--/*@thymesVar id="equals" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+    <!--/*@thymesVar id="minusTwo" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+
+    <span th:text="${two} + ${plus} + ${two} + ${equals} + {two} + {two}"></span>
 </body>
 </html>
