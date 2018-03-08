@@ -18,7 +18,8 @@ public class StaticWebPageController {
         model.put("plus","+");
         model.put("minus","-");
         model.put("one", "2 + 2 = 4");
-        model.put("four", "4");
+        model.put("four", " 4");
+        model.put("six", " 6");
         return "index";
     }
 }
