@@ -59,7 +59,7 @@ public class MailCreatorService {
         context.setVariable("preview_messageTwo","Daily tasks amount informator");
         context.setVariable("buttonTwo","Visit website");
         context.setVariable("show_buttonTwo",false);
-        context.setVariable("admin_name",adminConfig.getAdminName());
+        context.setVariable("admin_nameTwo",adminConfig.getAdminName());
         context.setVariable("is_firendTwo",true);
 
         return templateEngine.process("mail/tasks-amount-mail",context);
