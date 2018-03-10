@@ -22,12 +22,18 @@ public class TrelloMapperTestSuite {
         //Given
         List<TrelloBoardDto> trelloBoardDtoList = new ArrayList<>();
         List<TrelloBoard> trelloBoardList = new ArrayList<>();
+        List<TrelloListDto> trelloListsDto = new ArrayList<>();
+        List<TrelloList> trelloLists = new ArrayList<>();
+        TrelloBoard trelloBoard = new TrelloBoard("1","test",trelloLists);
 
         //When
         List<TrelloBoard> test = trelloMapper.mapToBoards(trelloBoardDtoList);
+        test.add(trelloBoard);
+
+        trelloBoardList.add(trelloBoard);
 
         //Then
-        Assert.assertEquals(trelloBoardList,test );
+        Assert.assertEquals(trelloBoardList,test);
     }
 
     @Test
@@ -35,9 +41,14 @@ public class TrelloMapperTestSuite {
         //given
         List<TrelloBoardDto> trelloBoardDtoList = new ArrayList<>();
         List<TrelloBoard> trelloBoardList = new ArrayList<>();
+        List<TrelloListDto> trelloListsDto = new ArrayList<>();
+        TrelloBoardDto trelloBoardDto = new TrelloBoardDto("1","test",trelloListsDto);
 
         //when
         List<TrelloBoardDto> test = trelloMapper.mapToBoardsDto(trelloBoardList);
+        test.add(trelloBoardDto);
+
+        trelloBoardDtoList.add(trelloBoardDto);
 
         //then
         Assert.assertEquals(test, trelloBoardDtoList);
@@ -47,9 +58,13 @@ public class TrelloMapperTestSuite {
         //Given
         List<TrelloList> trelloLists = new ArrayList<>();
         List<TrelloListDto> trelloListDtos = new ArrayList<>();
+        TrelloList trelloList = new TrelloList("1","list",true);
 
         //WHen
         List<TrelloList> test = trelloMapper.mapToList(trelloListDtos);
+        test.add(trelloList);
+
+        trelloLists.add(trelloList);
 
         //Then
         Assert.assertEquals(test, trelloLists);
@@ -59,9 +74,13 @@ public class TrelloMapperTestSuite {
         //Given
         List<TrelloList> trelloLists = new ArrayList<>();
         List<TrelloListDto> trelloListDtos = new ArrayList<>();
+        TrelloListDto trelloListDto = new TrelloListDto("1","list",true);
 
         //WHen
         List<TrelloListDto> test = trelloMapper.mapToListDto(trelloLists);
+        test.add(trelloListDto);
+
+        trelloListDtos.add(trelloListDto);
 
         //Then
         Assert.assertEquals(test, trelloListDtos);
