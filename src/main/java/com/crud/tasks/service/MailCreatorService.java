@@ -61,6 +61,7 @@ public class MailCreatorService {
         context.setVariable("show_buttonTwo",false);
         context.setVariable("admin_nameTwo",adminConfig.getAdminName());
         context.setVariable("is_firendTwo",true);
+        context.setVariable("goodBye","Best Regards, \n Staff");
 
         return templateEngine.process("mail/tasks-amount-mail",context);
     }
