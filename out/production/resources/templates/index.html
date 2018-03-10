@@ -12,25 +12,11 @@
 <span th:text="${variable}"></span>
 
 <br>
-
-    <!--/*@thymesVar id="one" type="com.crud.tasks.controller.StaticWebPageController"*/-->
-    <!--/*@thymesVar id="minus" type="com.crud.tasks.controller.StaticWebPageController"*/-->
-    <!--/*@thymesVar id="plus" type="com.crud.tasks.controller.StaticWebPageController"*/-->
-    <!--/*@thymesVar id="multiply" type="com.crud.tasks.controller.StaticWebPageController"*/-->
-    <!--/*@thymesVar id="equals" type="com.crud.tasks.controller.StaticWebPageController"*/-->
-    <!--/*@thymesVar id="two" type="com.crud.tasks.controller.StaticWebPageController"*/-->
     <!--/*@thymesVar id="two" type="com.crud.tasks.controller.StaticWebPageController"*/-->
 
-    <span th:text="${two} + ${plus} + ${two} + ${equals} + ${four} "></span>
-
-    <br>
-
-    <span th:text="${two} + ${multiply} + ${two} + ${plus} + ${two} + ${equals} + ${six}"></span>
-
-    <br>
-
-    <span th:text="${two} + ${minus} + ${two} + ${multiply} + ${two} + ${equals} + ${minusTwo} "></span>
-
+    <p>2 + 2 = <span th:text="${two} * ${two}"></span></p>
+    <p>2 * 2 + 2 = <span th:text="${two} * ${two} + ${two}"></span></p>
+    <p>2 - 2 * 2 = <span th:text="${two} - ${two} * ${two}"></span></p>
 
 </body>
 </html>
