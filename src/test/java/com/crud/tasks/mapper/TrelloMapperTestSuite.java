@@ -96,7 +96,7 @@ public class TrelloMapperTestSuite {
 
 
         //then
-        Assert.assertEquals(false,isEqual);
+        Assert.assertTrue(isEqual);
     }
     @Test
     public void testMapToCardDto() {
@@ -108,6 +108,6 @@ public class TrelloMapperTestSuite {
         boolean isEqual = trelloCardDto.equals(trelloMapper.mapToCardDto(trelloCard));
 
         //then
-        Assert.assertEquals(false,isEqual);
+        Assert.assertTrue(isEqual);
     }
 }
