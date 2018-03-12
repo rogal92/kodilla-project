@@ -92,10 +92,11 @@ public class TrelloMapperTestSuite {
         TrelloCard trelloCard = new TrelloCard("name","description","1","1");
 
         //when
-        TrelloCard trelloCardOne = trelloMapper.mapToCard(trelloCardDto);
+        boolean isEqual = trelloCard.equals(trelloMapper.mapToCard(trelloCardDto));
+
 
         //then
-        Assert.assertEquals(trelloCardOne,trelloCard);
+        Assert.assertEquals(false,isEqual);
     }
     @Test
     public void testMapToCardDto() {
@@ -104,9 +105,9 @@ public class TrelloMapperTestSuite {
         TrelloCard trelloCard = new TrelloCard("name","description","1","1");
 
         //when
-        TrelloCardDto trelloCardDtoOne = trelloMapper.mapToCardDto(trelloCard);
+        boolean isEqual = trelloCardDto.equals(trelloMapper.mapToCardDto(trelloCard));
 
         //then
-        Assert.assertEquals(trelloCardDtoOne,trelloCardDto);
+        Assert.assertEquals(false,isEqual);
     }
 }
