@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component;
 @Getter
 public class CompanyConfig {
 
-    @Value("${info.company}")
+    @Value("${info.company.name}")
     private String companyInfo;
 }
