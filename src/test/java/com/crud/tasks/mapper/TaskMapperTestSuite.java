@@ -28,7 +28,7 @@ public class TaskMapperTestSuite {
         boolean isEqual = taskMapper.mapToTask(taskDto).equals(task);
 
         //then
-        Assert.assertEquals(false,isEqual);
+        Assert.assertTrue(isEqual);
     }
     @Test
     public void testMapToTaskDto() {
@@ -40,7 +40,7 @@ public class TaskMapperTestSuite {
         boolean isEqual = taskMapper.mapToTaskDto(task).equals(taskDto);
 
         //then
-        Assert.assertEquals(false, isEqual);
+        Assert.assertTrue(isEqual);
     }
     @Test
     public void testMapToTaskListDto() {
@@ -48,12 +48,15 @@ public class TaskMapperTestSuite {
         List<Task> tasks = new ArrayList<>();
         List<TaskDto> taskDtos = new ArrayList<>();
         TaskDto taskDto = new TaskDto(3L,"title","content");
+        Task task = new Task(3L,"title","content");
 
 
         //when
-        List<TaskDto> taskDtoList = taskMapper.mapToTaskDtoList(tasks);
-        taskDtoList.add(taskDto);
+        List<TaskDto> taskDtoList = new ArrayList<>();
+        tasks.add(task);
         taskDtos.add(taskDto);
+
+        taskDtoList = taskMapper.mapToTaskDtoList(tasks);
 
         //then
         Assert.assertEquals(taskDtoList,taskDtos);
