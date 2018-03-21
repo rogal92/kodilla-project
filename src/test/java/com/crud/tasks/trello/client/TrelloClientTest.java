@@ -49,9 +49,9 @@ public class TrelloClientTest {
 
 
         TrelloBoardDto[] trelloBoards = new TrelloBoardDto[1];
-        trelloBoards[0] = new TrelloBoardDto("test_board", "test_id", new ArrayList<>());
+        trelloBoards[0] = new TrelloBoardDto("test_id", "test_board", new ArrayList<>());
 
-        URI uri = new URI("http://test.com/members/rogalski92@hotmail.com/boards?key=test&token=test&fields=name,id&lists=all");
+        URI uri = new URI("http://test.com/members/rogalski92@hotmail.com/boards?key=test&token=test&username&fields=name,id&lists=all");
         when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(trelloBoards);
 
         //When
@@ -59,9 +59,9 @@ public class TrelloClientTest {
 
         //Then
         assertEquals(1, fetchedTrelloBoards.size());
-        assertEquals("test_id", fetchedTrelloBoards.get(1).getId());
-        assertEquals("test_board", fetchedTrelloBoards.get(1).getName());
-        assertEquals(new ArrayList<>(), fetchedTrelloBoards.get(1).getLists());
+        assertEquals("test_id", fetchedTrelloBoards.get(0).getId());
+        assertEquals("test_board", fetchedTrelloBoards.get(0).getName());
+        assertEquals(new ArrayList<>(), fetchedTrelloBoards.get(0).getLists());
     }
 
     @Test
@@ -74,7 +74,7 @@ public class TrelloClientTest {
                 "test_id"
         );
 
-        URI url = new URI("http://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20Description&pos=top&idList=test_id");
+        URI url = new URI("http://test.com/cards?key=test&token=test&name=Task%20task&desc=Test%20Description&pos=top&idList=test_id");
 
         CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto(
                 "1",
@@ -95,16 +95,20 @@ public class TrelloClientTest {
     @Test
     public void shouldReturnEmptyList() throws URISyntaxException {
         //Given
-        TrelloListDto trelloListDto = new TrelloListDto(
-                "id",
-                "name",
-                true
+        List<TrelloListDto> trelloListDtos = new ArrayList<>();
+
+        TrelloBoardDto trelloBoardDto = new TrelloBoardDto(
+                "1",
+                "listName",
+                trelloListDtos
         );
+
         URI url = new URI("http://test.com/members/rogalski92@hotmail.com/boards?key=test&token=test&fields=name,id&lists=all");
         when(restTemplate.getForObject(url, RestTemplate.class)).thenReturn(null);
 
         //When
         List<TrelloBoardDto> newBoard = trelloClient.getTrelloBoards();
+        newBoard.add(trelloBoardDto);
 
         //Then
         assertEquals(0, newBoard.size());
