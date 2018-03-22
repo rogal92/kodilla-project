@@ -108,7 +108,6 @@ public class TrelloClientTest {
 
         //When
         List<TrelloBoardDto> newBoard = trelloClient.getTrelloBoards();
-        newBoard.add(trelloBoardDto);
 
         //Then
         assertEquals(0, newBoard.size());
