@@ -3,11 +3,13 @@ package com.crud.tasks.controller;
 import com.crud.tasks.domain.Task;
 import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.mapper.TaskMapper;
+import com.crud.tasks.service.DbService;
 import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -33,7 +35,8 @@ public class TaskControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    TaskMapper taskMapper;
+    private TaskMapper taskMapper;
+
 
     @Test
     public void shouldGetZeroTasks() throws Exception {
@@ -43,7 +46,7 @@ public class TaskControllerTest {
         when(taskMapper.mapToTaskDtoList(tasks)).thenReturn(taskDtos);
 
         //when&then
-        mockMvc.perform(get("/v1/task/getTasks/").contentType(MediaType.APPLICATION_JSON_UTF8))
+        mockMvc.perform(get("/v1/tasks").contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$",hasSize(0)));
     }
@@ -67,7 +70,7 @@ public class TaskControllerTest {
         String jsonContent = gson.toJson(taskDto);
 
         //when&then
-        mockMvc.perform(post("/v1/task/createTask")
+        mockMvc.perform(post("/v1/tasks")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(jsonContent))
                 .andExpect(jsonPath("$[0].id").value(1))
@@ -85,7 +88,7 @@ public class TaskControllerTest {
         Gson gson = new Gson();
         String jsonContent = gson.toJson(taskDto);
         // when & then
-        mockMvc.perform(put("/v1/task/updateTask")
+        mockMvc.perform(put("/v1/tasks")
         .contentType(MediaType.APPLICATION_JSON_UTF8)
         .content(jsonContent))
                 .andExpect(jsonPath("$[0].id").value(1))
